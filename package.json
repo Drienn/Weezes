@@ -9,13 +9,18 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:all": "npx npm-run-all watch-css storybook start",
     "build": "react-scripts build",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "create-atom": "node src/fileGenerator.js atom",
     "create-molecule": "node src/fileGenerator.js molecule",
     "create-organism": "node src/fileGenerator.js organism",
-    "create-redux": "node src/fileGenerator.js redux"
+    "create-redux": "node src/fileGenerator.js redux",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -27,8 +32,22 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@storybook/addon-actions": "^4.1.2",
+    "@storybook/addon-links": "^4.1.2",
+    "@storybook/addon-notes": "^4.1.2",
+    "@storybook/addons": "^4.1.2",
+    "@storybook/react": "^4.1.2",
+    "autoprefixer": "^9.4.3",
+    "babel-loader": "^8.0.4",
     "eslint": "5.6.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "webpack": "4.19.1",
+    "webpack-cli": "^3.1.2"
   }
 }
