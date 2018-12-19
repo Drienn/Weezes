@@ -1,23 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import PropTypes from 'prop-types';
+import Router from 'components/router/';
+import { connect } from 'react-redux';
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit 
-        {' '}
-        <code>src/App.js</code>
-        {' '}
-and save to reload.
-      </p>
-      <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        Learn React
-      </a>
-    </header>
+import * as Actions from './redux/actions';
+
+import 'App.css';
+import 'style/global.css';
+
+const App = ({ theme }) => (
+  <div className={`App ${theme}`}>
+    <Router />
+    <div className="main" />
+    <div className="sidebar" />
+    <div className="footer" />
   </div>
 );
 
-export default App;
+App.propTypes = {
+  theme: PropTypes.string,
+};
+
+App.defaultProps = {
+  theme: '',
+};
+
+const mapState = ({ theme }) => ({ theme: theme.theme });
+const mapDispatch = dispatch => ({
+  setTheme: theme => dispatch(Actions.setTheme(theme)),
+});
+
+export default connect(
+  mapState,
+  mapDispatch,
+)(App);

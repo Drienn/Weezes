@@ -230,7 +230,6 @@ const createReduxReducer = () => `import * as types from '../constants/types';
 
 const initialState = {
   data: [],
-  dataMap: {},
 };
 
 export default function(state = initialState, { type, payload }) {
@@ -251,24 +250,14 @@ const createRedux = () => {
   const reducersDir = './src/redux/reducers';
 
   // ** Create Actions ** //
-  fs.writeFile(
-    `${actionsDir}/${file}.js`,
-    `${createReduxActions()}`,
-    'utf8',
-    err => {
-      if (err) errorLog('could not create action file -', err);
-    }
-  );
+  fs.writeFile(`${actionsDir}/${file}.js`, `${createReduxActions()}`, 'utf8', err => {
+    if (err) errorLog('could not create action file -', err);
+  });
 
   // ** Create Reducer ** //
-  fs.writeFile(
-    `${reducersDir}/${file}Reducer.js`,
-    `${createReduxReducer()}`,
-    'utf8',
-    err => {
-      if (err) errorLog('could not create reducer file -', err);
-    }
-  );
+  fs.writeFile(`${reducersDir}/${file}Reducer.js`, `${createReduxReducer()}`, 'utf8', err => {
+    if (err) errorLog('could not create reducer file -', err);
+  });
 
   // ** Adds export line at the bottom of the actions index.js file ** //
   fs.readFile(`${actionsDir}/index.js`, (err, data) => {
@@ -280,8 +269,7 @@ const createRedux = () => {
     fs.writeFile(
       `${actionsDir}/index.js`,
       data,
-      importErr =>
-        importErr && errorLog('could not auto import component', importErr)
+      importErr => importErr && errorLog('could not auto import component', importErr)
     );
     return successLog(`${file} action auto export succesful!`);
   });
@@ -291,18 +279,13 @@ const createRedux = () => {
     if (err) return errorLog('could not read index file', err);
     data = data.toString().split('\n');
     const rootReducerIndex = data.findIndex(d => d.includes('const'));
-    data.splice(
-      rootReducerIndex - 1,
-      0,
-      `import ${file} from './${file}Reducer';`
-    );
+    data.splice(rootReducerIndex - 1, 0, `import ${file} from './${file}Reducer';`);
     data.splice(-4, 0, `  ${file},`);
 
     fs.writeFile(
       `${reducersDir}/index.js`,
       data.join('\n'),
-      importErr =>
-        importErr && errorLog('could not auto import reducer', importErr)
+      importErr => importErr && errorLog('could not auto import reducer', importErr)
     );
     return successLog(`${file} reducer auto import succesful!`);
   });
@@ -323,8 +306,7 @@ const createAtomicFileTree = type => {
   if (type === 'organism') dir = `./src/components/organisms/${file}`;
 
   // ** Does nothing if the file is already created ** //
-  if (fs.existsSync(`${dir}/${file}.jsx`))
-    return errorLog('Component Already Exists');
+  if (fs.existsSync(`${dir}/${file}.jsx`)) return errorLog('Component Already Exists');
 
   // ** Creates the directory in which the component will live ** //
   fs.mkdir(dir, err => {
@@ -381,9 +363,7 @@ const createAtomicFileTree = type => {
 
   if (fs.existsSync(`${dir}/${file}.jsx`)) {
     successLog(`${type} created: ${file}.jsx`);
-    successLog(
-      `also created: ${file}.css, ${file}.scss, ${file}.story.js, ${file}.test.js`
-    );
+    successLog(`also created: ${file}.css, ${file}.scss, ${file}.story.js, ${file}.test.js`);
 
     // ** Adds import line at the bottom of the respective index.js file ** //
     fs.readFile(`./src/components/${type}s/index.js`, (err, data) => {
@@ -395,8 +375,7 @@ const createAtomicFileTree = type => {
       fs.writeFile(
         `./src/components/${type}s/index.js`,
         data.join(';\n'),
-        importErr =>
-          importErr && errorLog('could not auto import component', importErr)
+        importErr => importErr && errorLog('could not auto import component', importErr)
       );
       successLog('auto import succesful!');
       successLog('Happy Coding!');

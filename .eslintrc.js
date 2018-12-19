@@ -1,22 +1,12 @@
 module.exports = {
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-      modules: true,
-      experimentalObjectRestSpread: true
-    }
-  },
-  plugins: ['react'],
-  extends: ['airbnb', 'eslint:recommended', 'plugin:react/recommended'],
+  env: { node: true, browser: true, es6: true },
+  parser: 'babel-eslint',
+  extends: ['airbnb'],
+  plugins: ['prettier'],
   rules: {
-    'comma-dangle': 0
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'class-methods-use-this': 0,
+    'import/no-unresolved': 0,
+    'no-nested-ternary': 0,
   },
-  settings: {
-    react: {
-      pragma: 'React',
-      version: '16.7.0'
-    }
-  }
 };
