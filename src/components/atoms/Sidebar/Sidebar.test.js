@@ -2,11 +2,11 @@ import React from 'react';
 /* eslint-disable */
 import Adapter from 'enzyme-adapter-react-16';
 import { configure, shallow } from 'enzyme';
-import NewAtom from './NewAtom';
+import Sidebar from './Sidebar';
 
 configure({ adapter: new Adapter() });
 
-describe('NewAtom - atom', () => {
+describe('Sidebar - atom', () => {
   /**********************
    * Initialization
    **********************/
@@ -18,7 +18,7 @@ describe('NewAtom - atom', () => {
    
 
   // create a shallow or mounted copy
-  const newAtom = shallow(<NewAtom {...props} />);
+  const sidebar = shallow(<Sidebar {...props} />);
 
   /**********************
    * Tests
@@ -26,8 +26,8 @@ describe('NewAtom - atom', () => {
 
   /* Rendering Tests */
   describe('Rendering', () => {
-    it('renders the newAtom', () => {
-      expect(newAtom).toMatchSnapshot();
+    it('renders the sidebar', () => {
+      expect(sidebar).toMatchSnapshot();
     });
   });
 

@@ -10,10 +10,7 @@ import 'style/global.css';
 
 const App = ({ theme }) => (
   <div className={`App ${theme}`}>
-    <Router />
-    <div className="main" />
-    <div className="sidebar" />
-    <div className="footer" />
+    <Router className="main" />
   </div>
 );
 

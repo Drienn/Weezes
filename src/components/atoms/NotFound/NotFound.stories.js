@@ -1,9 +1,9 @@
 import React from 'react';
 /* eslint-disable */
 import { storiesOf } from '@storybook/react';
-import NewAtom from './NewAtom';
+import NotFound from './NotFound';
 
-storiesOf('Atoms/NewAtom', module)
+storiesOf('Atoms/NotFound', module)
   .add('Default', () => (
-    <NewAtom />
+    <NotFound />
   ));

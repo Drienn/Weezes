@@ -2,13 +2,37 @@
   display: grid;
   height: 100vh;
   width: 100vw;
-  grid-template-areas: 'header header header header' 'main main . sidebar' 'main main . sidebar' 'main main . sidebar' 'main main . sidebar' 'main main . sidebar' 'footer footer footer footer'; }
+  background-color: #640000;
+  grid-template-columns: 1fr 1fr 1fr 100px;
+  grid-row-gap: 25px;
+  grid-template-areas: 'header header header header' 'main main main sidebar' 'main main main sidebar' 'main main main sidebar' 'main main main sidebar' 'main main main sidebar' 'footer footer footer footer'; }
   .App .header {
     grid-area: header;
     background-color: aqua; }
   .App .main {
+    display: grid;
     grid-area: main;
-    background-color: purple; }
+    background-color: purple;
+    grid-gap: 25px;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    grid-template-areas: 'sec11 sec11 sec12 sec12' 'sec21 sec21 sec22 sec22'; }
+    .App .main .sec11 {
+      grid-area: sec11;
+      background-color: brown; }
+      .App .main .sec11 .inner-workings {
+        display: flex;
+        width: 50%;
+        margin: 0px auto; }
+    .App .main .sec12 {
+      grid-area: sec12;
+      background-color: grey; }
+    .App .main .sec21 {
+      grid-area: sec21;
+      background-color: pink; }
+    .App .main .sec22 {
+      grid-area: sec22;
+      background-color: yellow; }
   .App .sidebar {
     grid-area: sidebar;
     background-color: green; }
