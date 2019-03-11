@@ -13,15 +13,14 @@ const errorLog = (message, err = '') => {
   console.log('\x1b[31m%s\x1b[0m', message, err);
 };
 
-const makeContainerStyleName = name =>
-  `${name
-    .split('')
-    .map((l, i) => {
-      if (i === 0) return l.toLowerCase();
-      if (l.toUpperCase() === name[i]) return `-${l.toLowerCase()}`;
-      return l;
-    })
-    .join('')}-container`;
+const makeContainerStyleName = name => `${name
+  .split('')
+  .map((l, i) => {
+    if (i === 0) return l.toLowerCase();
+    if (l.toUpperCase() === name[i]) return `-${l.toLowerCase()}`;
+    return l;
+  })
+  .join('')}-container`;
 
 const createReactFunctionalComponent = () => `import React from 'react';
 // import PropTypes from 'prop-types';
@@ -243,19 +242,18 @@ export default function(state = initialState, { type, payload }) {
 `;
 
 const createRedux = () => {
-  if (file[0].toUpperCase() === file[0] || file.includes('-'))
-    return errorLog('redux file names must be camelCase');
+  if (file[0].toUpperCase() === file[0] || file.includes('-')) return errorLog('redux file names must be camelCase');
 
   const actionsDir = './src/redux/actions';
   const reducersDir = './src/redux/reducers';
 
   // ** Create Actions ** //
-  fs.writeFile(`${actionsDir}/${file}.js`, `${createReduxActions()}`, 'utf8', err => {
+  fs.writeFile(`${actionsDir}/${file}.js`, `${createReduxActions()}`, 'utf8', (err) => {
     if (err) errorLog('could not create action file -', err);
   });
 
   // ** Create Reducer ** //
-  fs.writeFile(`${reducersDir}/${file}Reducer.js`, `${createReduxReducer()}`, 'utf8', err => {
+  fs.writeFile(`${reducersDir}/${file}Reducer.js`, `${createReduxReducer()}`, 'utf8', (err) => {
     if (err) errorLog('could not create reducer file -', err);
   });
 
@@ -269,7 +267,7 @@ const createRedux = () => {
     fs.writeFile(
       `${actionsDir}/index.js`,
       data,
-      importErr => importErr && errorLog('could not auto import component', importErr)
+      importErr => importErr && errorLog('could not auto import component', importErr),
     );
     return successLog(`${file} action auto export succesful!`);
   });
@@ -285,7 +283,7 @@ const createRedux = () => {
     fs.writeFile(
       `${reducersDir}/index.js`,
       data.join('\n'),
-      importErr => importErr && errorLog('could not auto import reducer', importErr)
+      importErr => importErr && errorLog('could not auto import reducer', importErr),
     );
     return successLog(`${file} reducer auto import succesful!`);
   });
@@ -296,9 +294,8 @@ const createRedux = () => {
 };
 
 // ************* CREATES COMPONENT **************** //
-const createAtomicFileTree = type => {
-  if (file[0].toLowerCase() === file[0] || file.includes('-'))
-    return errorLog('Component Names Must Be "PascalCase"');
+const createAtomicFileTree = (type) => {
+  if (file[0].toLowerCase() === file[0] || file.includes('-')) return errorLog('Component Names Must Be "PascalCase"');
 
   let dir;
   if (type === 'atom') dir = `./src/components/atoms/${file}`;
@@ -309,7 +306,7 @@ const createAtomicFileTree = type => {
   if (fs.existsSync(`${dir}/${file}.jsx`)) return errorLog('Component Already Exists');
 
   // ** Creates the directory in which the component will live ** //
-  fs.mkdir(dir, err => {
+  fs.mkdir(dir, (err) => {
     if (err) errorLog('could not create directory for component -', err);
   });
 
@@ -322,9 +319,9 @@ const createAtomicFileTree = type => {
     }
     `,
     'utf8',
-    err => {
+    (err) => {
       if (err) errorLog('could not create css file -', err);
-    }
+    },
   );
   fs.writeFile(
     `${dir}/${file}.scss`,
@@ -334,9 +331,9 @@ const createAtomicFileTree = type => {
 }
 `,
     'utf8',
-    err => {
+    (err) => {
       if (err) errorLog('could not create scss file -', err);
-    }
+    },
   );
 
   // ** Creates the atom/molecule/organism ** //
@@ -348,16 +345,16 @@ const createAtomicFileTree = type => {
     return createReactFunctionalComponent();
   };
 
-  fs.writeFile(`${dir}/${file}.jsx`, requestedComopnent(), 'utf8', err => {
+  fs.writeFile(`${dir}/${file}.jsx`, requestedComopnent(), 'utf8', (err) => {
     if (err) errorLog('could not create component -', err);
   });
 
   // ** Creates the Component story file ** //
-  fs.writeFile(`${dir}/${file}.stories.js`, createStory(), 'utf8', err => {
+  fs.writeFile(`${dir}/${file}.stories.js`, createStory(), 'utf8', (err) => {
     if (err) errorLog('could not create story file -', err);
   });
   // ** Creates the Component test file ** //
-  fs.writeFile(`${dir}/${file}.test.js`, createTest(), 'utf8', err => {
+  fs.writeFile(`${dir}/${file}.test.js`, createTest(), 'utf8', (err) => {
     if (err) errorLog('could not create test file -', err);
   });
 
@@ -375,7 +372,7 @@ const createAtomicFileTree = type => {
       fs.writeFile(
         `./src/components/${type}s/index.js`,
         data.join(';\n'),
-        importErr => importErr && errorLog('could not auto import component', importErr)
+        importErr => importErr && errorLog('could not auto import component', importErr),
       );
       successLog('auto import succesful!');
       successLog('Happy Coding!');

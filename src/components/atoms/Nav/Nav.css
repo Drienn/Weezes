@@ -1,0 +1,25 @@
+.nav-container {
+  position: fixed;
+  right: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; }
+  .nav-container li {
+    float: right;
+    background-color: #333;
+    width: 6em; }
+    .nav-container li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none; }
+    .nav-container li a:hover {
+      background-color: #111; }
+    .nav-container li.dropdown:hover .dropdown-content {
+      display: block; }
+    .nav-container li .dropdown-content {
+      display: none; }
+    .nav-container li .active {
+      color: #999; }

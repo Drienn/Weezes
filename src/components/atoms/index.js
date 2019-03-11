@@ -3,3 +3,4 @@ export { default as NotFound } from './NotFound/NotFound';
 export { default as Footer } from './Footer/Footer';
 export { default as Sidebar } from './Sidebar/Sidebar';
 export { default as Main } from './Main/Main';
+export { default as Nav } from './Nav/Nav';

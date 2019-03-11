@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BrowserRouter } from 'react-router-dom';
 import Router from 'components/router/';
 import { connect } from 'react-redux';
 
@@ -9,9 +10,11 @@ import 'App.css';
 import 'style/global.css';
 
 const App = ({ theme }) => (
-  <div className={`App ${theme}`}>
-    <Router className="main" />
-  </div>
+  <BrowserRouter>
+    <div className={`App ${theme}`} onScroll={() => console.log('scorlling!')}>
+      <Router className="main" />
+    </div>
+  </BrowserRouter>
 );
 
 App.propTypes = {

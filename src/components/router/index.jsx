@@ -4,6 +4,7 @@ import { Switch, Route as ReactRoute } from 'react-router';
 import {
   Header, NotFound, Sidebar, Footer, Main,
 } from '../atoms';
+import { Shop } from '../organisms';
 
 export const Route = ({ path, component: Component, className }) => (
   <>
@@ -17,6 +18,7 @@ export const Route = ({ path, component: Component, className }) => (
 const Router = ({ className }) => (
   <Switch>
     <Route exact path="/" component={Main} className={className} />
+    <Route path="/shop" component={Shop} className={className} />
     <ReactRoute component={NotFound} />
   </Switch>
 );

@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import theme from './themeReducer';
 
 const combinedReducer = combineReducers({
-  theme
+  theme,
 });
 
 // Dan Abramov's method for clearing out a store upon user logout

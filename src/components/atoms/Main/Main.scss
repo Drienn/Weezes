@@ -1,4 +1,11 @@
 .main-container {
   height: unset;
   width: unset;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  .fillter {
+    height: 100vh;
+  }
 }

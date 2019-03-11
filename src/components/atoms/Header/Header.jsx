@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Header.css';
+import Nav from '../Nav/Nav';
 
 const Header = ({ className }) => (
   <div className={`header-container ${className}`}>
-    <h1>Header</h1>
+    <Nav />
+    <h1>Weezies Whimsies</h1>
   </div>
 );
 

@@ -4,7 +4,10 @@ import './Main.css';
 
 const Main = ({ className }) => (
   <div className={`main-container ${className}`}>
-    <h1 className="sec11">Main</h1>
+    <div className="main">
+      <h1 className="">Main 1</h1>
+      <div className="fillter" />
+    </div>
   </div>
 );
 
