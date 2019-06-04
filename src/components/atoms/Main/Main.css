@@ -1,8 +1,0 @@
-.main-container {
-  height: unset;
-  width: unset;
-  display: flex;
-  justify-content: center;
-  text-align: center; }
-  .main-container .fillter {
-    height: 100vh; }

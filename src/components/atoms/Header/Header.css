@@ -1,9 +1,0 @@
-.header-container {
-  display: flex;
-  background-color: green;
-  text-align: center;
-  justify-content: center; }
-  .header-container h1 {
-    color: #ffffff;
-    font-size: 6em;
-    align-self: center; }
