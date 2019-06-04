@@ -1,0 +1,13 @@
+@import '../../../style/safe-include';
+
+.card-container {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid $brand-white;
+
+  .header-text {
+    text-transform: uppercase;
+    color: $brand-dark-grey-text;
+    opacity: 0.5;
+  }
+}

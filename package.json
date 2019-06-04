@@ -22,7 +22,7 @@
     "start": "react-scripts start",
     "start:all": "npx npm-run-all watch-css storybook start",
     "build": "react-scripts build",
-    "build-css": "node-sass-chokidar src/ -o src/",
+    "build-css": "node-sass-chokidar --include-path ./node_modules/foundation-sites/scss --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

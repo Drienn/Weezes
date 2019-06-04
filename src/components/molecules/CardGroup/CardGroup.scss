@@ -1,0 +1,12 @@
+.card-group-container {
+  display: flex;
+  height: 250px;
+  div:first-child {
+    width: 300px;
+    margin: 10px;
+  }
+  div:last-child {
+    width: 900px;
+    margin: 10px;
+  }
+}

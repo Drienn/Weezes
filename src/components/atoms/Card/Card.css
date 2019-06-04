@@ -1,0 +1,8 @@
+.card-container {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ffffff; }
+  .card-container .header-text {
+    text-transform: uppercase;
+    color: #404143;
+    opacity: 0.5; }

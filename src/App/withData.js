@@ -5,7 +5,7 @@ export const withData = (Component) => {
   // const reduxState = () => ();
   const reduxState = null;
 
-  const reduxActions = () => {};
+  const reduxActions = () => ({});
   // action: (...args) => dispatch(Actions.action(...args)),
   // });
 

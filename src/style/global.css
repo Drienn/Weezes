@@ -5,3 +5,45 @@ h1,
 h2 {
   margin: 0px;
   padding: 0px; }
+
+.bg-brand-green {
+  background-color: #a8d73e; }
+
+.bg-brand-orange {
+  background-color: #f38a2d; }
+
+.bg-brand-blue {
+  background-color: #32a4de; }
+
+.bg-brand-murky-blue {
+  background-color: #2a81b1; }
+
+.bg-brand-grey {
+  background-color: #393839; }
+
+.bg-brand-accent-grey {
+  background-color: #444244; }
+
+.bg-brand-light-grey {
+  background-color: #858485; }
+
+.bg-brand-fusia {
+  background-color: #ce0044; }
+
+.bg-brand-plum {
+  background-color: #7a597a; }
+
+.bg-brand-red {
+  background-color: #fb0007; }
+
+.bg-brand-white {
+  background-color: #ffffff; }
+
+.bg-brand-black {
+  background-color: #0a090a; }
+
+.bg-brand-grey-text {
+  background-color: #bebdbe; }
+
+.bg-brand-dark-grey-text {
+  background-color: #717478; }

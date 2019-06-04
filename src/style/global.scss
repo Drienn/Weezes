@@ -1,3 +1,5 @@
+@import './safe-include';
+
 button:hover {
   cursor: pointer;
 }
@@ -6,4 +8,10 @@ h1,
 h2 {
   margin: 0px;
   padding: 0px;
+}
+
+@each $i in $colors {
+  .bg-#{nth($i, 1)} {
+    background-color: nth($i, 2);
+  }
 }

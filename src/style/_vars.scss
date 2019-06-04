@@ -6,10 +6,17 @@ $brand-murky-blue: #2a81b1;
 $brand-grey: #393839;
 $brand-accent-grey: #444244;
 $brand-light-grey: #858485;
+$brand-light-grey-text: #fed3bd;
+$brand-grey-text: #bebdbe;
+$brand-dark-grey-text: darken(#717478, 20%);
 $brand-fusia: #ce0044;
 $brand-plum: #7a597a;
 $brand-red: #fb0007;
 $brand-white: #ffffff;
 $brand-black: #0a090a;
-$brand-grey-text: #bebdbe;
-$brand-dark-grey-text: #717478;
+
+$colors: 'brand-green' #a8d73e, 'brand-orange' #f38a2d, 'brand-blue' #32a4de,
+  'brand-murky-blue' #2a81b1, 'brand-grey' #393839, 'brand-accent-grey' #444244,
+  'brand-light-grey' #858485, 'brand-fusia' #ce0044, 'brand-plum' #7a597a,
+  'brand-red' #fb0007, 'brand-white' #ffffff, 'brand-black' #0a090a,
+  'brand-grey-text' #bebdbe, 'brand-dark-grey-text' #717478;
