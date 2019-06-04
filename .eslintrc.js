@@ -8,5 +8,6 @@ module.exports = {
     'class-methods-use-this': 0,
     'import/no-unresolved': 0,
     'no-nested-ternary': 0,
+    'react/forbid-prop-types': 0,
   },
 };

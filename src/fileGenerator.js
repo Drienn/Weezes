@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
@@ -12,6 +13,10 @@ const successLog = message => console.log('\x1b[32m%s\x1b[0m', message);
 const errorLog = (message, err = '') => {
   console.log('\x1b[31m%s\x1b[0m', message, err);
 };
+
+const writeFile = (dir, fileName, func, kind) => fs.writeFile(`${dir}/${fileName}`, func, 'utf8', (err) => {
+  if (err) errorLog(`could not create ${kind} file -`, err);
+});
 
 const makeContainerStyleName = name => `${name
   .split('')
@@ -67,7 +72,7 @@ export default ${file};
 
 const createReduxReactFunctionalComponent = () => `import React from 'react';
 // import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { withData } from './withData';
 import './${file}.css';
 
 const ${file} = () => (
@@ -80,17 +85,12 @@ const ${file} = () => (
 
 // ${file}.defaultProps = {};
 
-const mapState = () => ({});
-
-export default connect(
-  mapState,
-  {}
-)(${file});
+export default withData(${file});
 `;
 
 const createReduxReactClassComponent = () => `import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { withData } from './withData';
 import './${file}.css';
 
 class ${file} extends Component {
@@ -113,12 +113,25 @@ class ${file} extends Component {
 
 // ${file}.defaultProps = {};
 
-const mapState = () => ({});
+export default withData(${file});
+`;
 
-export default connect(
-  mapState,
-  {}
-)(${file});
+const createReduxWithDataFile = () => `import { connect } from 'react-redux';
+import * as Actions from 'redux/actions';
+
+export const withData = (Component) => {
+  const reduxState = {};
+  // const reduxState = ({ state }) => ({ state });
+
+  const reduxActions = () => {};
+  // const reduxActions = dispatch => ({
+  //   action: (...args) => dispatch(Actions.action(...args)),
+  // });
+
+  return connect(reduxState, reduxActions)(Component);
+};
+
+export default withData;
 `;
 
 const createStory = () => {
@@ -156,64 +169,63 @@ storiesOf('${storyFolder}/${file}', module)
 `;
 };
 
-const createTest = () => {
-  const camelCaseComponent = file[0].toLowerCase() + file.substr(1);
+// const createTest = () => {
+//   const camelCaseComponent = file[0].toLowerCase() + file.substr(1);
 
-  return `import React from 'react';
-/* eslint-disable */
-import Adapter from 'enzyme-adapter-react-16';
-import { configure, shallow } from 'enzyme';
-import ${file} from './${file}';
+//   return `import React from 'react';
+// /* eslint-disable */
+// import Adapter from 'enzyme-adapter-react-16';
+// import { configure, shallow } from 'enzyme';
+// import ${file} from './${file}';
 
-configure({ adapter: new Adapter() });
+// configure({ adapter: new Adapter() });
 
-describe('${file} - ${fileType}', () => {
-  /**********************
-   * Initialization
-   **********************/
+// describe('${file} - ${fileType}', () => {
+//   /**********************
+//    * Initialization
+//    **********************/
 
-  // setup mock functions
+//   // setup mock functions
 
-  // setup initial props
-  const props = {};
-   
+//   // setup initial props
+//   const props = {};
 
-  // create a shallow or mounted copy
-  const ${camelCaseComponent} = shallow(<${file} {...props} />);
+//   // create a shallow or mounted copy
+//   const ${camelCaseComponent} = shallow(<${file} {...props} />);
 
-  /**********************
-   * Tests
-   **********************/
+//   /**********************
+//    * Tests
+//    **********************/
 
-  /* Rendering Tests */
-  describe('Rendering', () => {
-    it('renders the ${camelCaseComponent}', () => {
-      expect(${camelCaseComponent}).toMatchSnapshot();
-    });
-  });
+//   /* Rendering Tests */
+//   describe('Rendering', () => {
+//     it('renders the ${camelCaseComponent}', () => {
+//       expect(${camelCaseComponent}).toMatchSnapshot();
+//     });
+//   });
 
-  // Event Tests
-  describe('Event Handlers', () => {
+//   // Event Tests
+//   describe('Event Handlers', () => {
 
-  });
+//   });
 
-  // Prop Tests
-  describe('Incoming Props', () => {
-    
-  });
-});`;
-};
+//   // Prop Tests
+//   describe('Incoming Props', () => {
+
+//   });
+// });`;
+// };
 
 const createReduxActions = () => `import * as types from '../constants/types';
 
-export const getCallback = data => dispatch => {
+export const successCallback = data => (dispatch) => {
   dispatch({
     type: types.${file.toUpperCase()}_SUCCESS,
     payload: { data },
   });
 };
 
-export const get${file[0].toUpperCase()}${file.substr(1)} = () => dispatch => {
+export const get${file[0].toUpperCase()}${file.substr(1)} = () => (dispatch) => {
   dispatch({
     type: types.API,
     payload: {
@@ -226,19 +238,28 @@ export const get${file[0].toUpperCase()}${file.substr(1)} = () => dispatch => {
 `;
 
 const createReduxReducer = () => `import * as types from '../constants/types';
+import * as cases from './cases';
 
 const initialState = {
   data: [],
 };
 
-export default function(state = initialState, { type, payload }) {
+export default function (state = initialState, { type, payload }) {
   switch (type) {
-    case types.${file.toUpperCase()}:
-      return { ...state, ...payload };
+    case types.${file.toUpperCase()}_FIRST_CASE: return cases.firstCase(state, payload);
     default:
       return state;
   }
 }
+`;
+
+const createReducerCaseIndex = () => `export { default as firstCase } from './firstCase';
+export { default as firstCase2 } from './firstCase';
+`;
+
+const createInitialReducerCase = () => `export const firstCase = (state, payload) => ({ ...state, ...payload });
+
+export default firstCase;
 `;
 
 const createRedux = () => {
@@ -246,27 +267,40 @@ const createRedux = () => {
 
   const actionsDir = './src/redux/actions';
   const reducersDir = './src/redux/reducers';
+  const reducerDirWithFile = `./src/redux/reducers/${file}Reducer`;
 
   // ** Create Actions ** //
-  fs.writeFile(`${actionsDir}/${file}.js`, `${createReduxActions()}`, 'utf8', (err) => {
-    if (err) errorLog('could not create action file -', err);
-  });
+  writeFile(actionsDir, `${file}.js`, `${createReduxActions()}`, 'action');
+
+  // * Creates nested folder structure for reducers * //
+  fs.mkdirSync(reducerDirWithFile);
+  fs.mkdirSync(`${reducerDirWithFile}/cases`);
 
   // ** Create Reducer ** //
-  fs.writeFile(`${reducersDir}/${file}Reducer.js`, `${createReduxReducer()}`, 'utf8', (err) => {
-    if (err) errorLog('could not create reducer file -', err);
-  });
+  writeFile(reducerDirWithFile, 'index.js', `${createReduxReducer()}`, 'reducer');
+
+  //  ** Create Reducer Case folder ** //
+  writeFile(reducerDirWithFile, 'cases/index.js', `${createReducerCaseIndex()}`, 'reducer index');
+
+  //  ** Create Reducer Case folder ** //
+  writeFile(
+    reducerDirWithFile,
+    'cases/firstCase.js',
+    `${createInitialReducerCase()}`,
+    'first case',
+  );
 
   // ** Adds export line at the bottom of the actions index.js file ** //
   fs.readFile(`${actionsDir}/index.js`, (err, data) => {
     if (err) return errorLog('could not read index file', err);
-    data = data.toString().split(';\n');
-    data.pop();
-    data.push(`export * from './${file}';\n`);
-    data = data.join(';\n');
+    let newData = data;
+    newData = newData.toString().split(';\n');
+    newData.pop();
+    newData.push(`export * from './${file}';\n`);
+    newData = newData.join(';\n');
     fs.writeFile(
       `${actionsDir}/index.js`,
-      data,
+      newData,
       importErr => importErr && errorLog('could not auto import component', importErr),
     );
     return successLog(`${file} action auto export succesful!`);
@@ -275,14 +309,15 @@ const createRedux = () => {
   // ** Adds import line at the bottom of the reducer's imports index.js file ** //
   fs.readFile(`${reducersDir}/index.js`, (err, data) => {
     if (err) return errorLog('could not read index file', err);
-    data = data.toString().split('\n');
-    const rootReducerIndex = data.findIndex(d => d.includes('const'));
-    data.splice(rootReducerIndex - 1, 0, `import ${file} from './${file}Reducer';`);
-    data.splice(-4, 0, `  ${file},`);
+    let newData = data;
+    newData = newData.toString().split('\n');
+    const rootReducerIndex = newData.findIndex(d => d.includes('const'));
+    newData.splice(rootReducerIndex - 1, 0, `import ${file} from './${file}Reducer';`);
+    newData.splice(rootReducerIndex + 3, 0, `  ${file},`);
 
     fs.writeFile(
       `${reducersDir}/index.js`,
-      data.join('\n'),
+      newData.join('\n'),
       importErr => importErr && errorLog('could not auto import reducer', importErr),
     );
     return successLog(`${file} reducer auto import succesful!`);
@@ -337,15 +372,23 @@ const createAtomicFileTree = (type) => {
   );
 
   // ** Creates the atom/molecule/organism ** //
-  const requestedComopnent = () => {
-    if (classFlag && reduxFlag) return createReduxReactClassComponent();
-    if (reduxFlag) return createReduxReactFunctionalComponent();
+  const requestedComponent = () => {
+    if (classFlag && reduxFlag) {
+      // ** Create withData ** //
+      writeFile(dir, 'withData.js', createReduxWithDataFile(), 'withData');
+      return createReduxReactClassComponent();
+    }
+    if (reduxFlag) {
+      // ** Create withData ** //
+      writeFile(dir, 'withData.js', createReduxWithDataFile(), 'withData');
+      return createReduxReactFunctionalComponent();
+    }
     if (classFlag) return createReactClassComponent();
 
     return createReactFunctionalComponent();
   };
 
-  fs.writeFile(`${dir}/${file}.jsx`, requestedComopnent(), 'utf8', (err) => {
+  fs.writeFile(`${dir}/${file}.jsx`, requestedComponent(), 'utf8', (err) => {
     if (err) errorLog('could not create component -', err);
   });
 
@@ -354,9 +397,9 @@ const createAtomicFileTree = (type) => {
     if (err) errorLog('could not create story file -', err);
   });
   // ** Creates the Component test file ** //
-  fs.writeFile(`${dir}/${file}.test.js`, createTest(), 'utf8', (err) => {
-    if (err) errorLog('could not create test file -', err);
-  });
+  // fs.writeFile(`${dir}/${file}.test.js`, createTest(), 'utf8', (err) => {
+  //   if (err) errorLog('could not create test file -', err);
+  // });
 
   if (fs.existsSync(`${dir}/${file}.jsx`)) {
     successLog(`${type} created: ${file}.jsx`);
@@ -365,13 +408,14 @@ const createAtomicFileTree = (type) => {
     // ** Adds import line at the bottom of the respective index.js file ** //
     fs.readFile(`./src/components/${type}s/index.js`, (err, data) => {
       if (err) return errorLog('could not read index file', err);
-      data = data.toString().split(';\n');
-      data.pop();
-      data.push(`export { default as ${file} } from './${file}/${file}';\n`);
+      let newData = data;
+      newData = newData.toString().split(';\n');
+      newData.pop();
+      newData.push(`export { default as ${file} } from './${file}/${file}';\n`);
 
       fs.writeFile(
         `./src/components/${type}s/index.js`,
-        data.join(';\n'),
+        newData.join(';\n'),
         importErr => importErr && errorLog('could not auto import component', importErr),
       );
       successLog('auto import succesful!');

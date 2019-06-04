@@ -1,9 +1,9 @@
 import * as types from '../constants/types';
 
-export const setTheme = theme => dispatch => {
+export const setTheme = theme => (dispatch) => {
   dispatch({
     type: types.SET_THEME,
-    payload: { theme }
+    payload: { theme },
   });
 };
 
@@ -24,3 +24,5 @@ export const setTheme = theme => dispatch => {
 //     }
 //   });
 // };
+
+export default setTheme;

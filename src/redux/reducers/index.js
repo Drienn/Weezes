@@ -7,11 +7,12 @@ const combinedReducer = combineReducers({
 
 // Dan Abramov's method for clearing out a store upon user logout
 const rootReducer = (state, action) => {
+  let newState = state;
   if (action.type === 'USER_LOGOUT') {
-    state = undefined;
+    newState = undefined;
   }
 
-  return combinedReducer(state, action);
+  return combinedReducer(newState, action);
 };
 
 export default rootReducer;
