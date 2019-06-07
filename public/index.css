@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'SourceSansPro';
+  src: local('SourceSansPro'),
+    url(./fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SourceSansPro-Black';
+  src: local('SourceSansPro-Black'),
+    url(./fonts/Source_Sans_Pro/SourceSansPro-Black.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SourceSansPro-BlackItalic';
+  src: local('SourceSansPro-BlackItalic'),
+    url(./fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf)
+      format('truetype');
+}

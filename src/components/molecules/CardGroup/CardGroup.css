@@ -1,9 +1,13 @@
 .card-group-container {
   display: flex;
-  height: 250px; }
+  height: 300px; }
   .card-group-container div:first-child {
     width: 300px;
     margin: 10px; }
+    .card-group-container div:first-child .header {
+      width: 94%; }
   .card-group-container div:last-child {
-    width: 900px;
+    width: 800px;
     margin: 10px; }
+    .card-group-container div:last-child .header {
+      width: 98%; }

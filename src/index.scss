@@ -1,0 +1,125 @@
+@import './style/safe-include';
+
+@mixin font-face($name) {
+  font-family: $name;
+  src: local($name),
+    url('./style/fonts/Source_Sans_Pro/#{$name}.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.logo {
+  margin: 10px;
+  width: 180px;
+  height: 50px;
+  background-size: 180px;
+  background-image: url('./assets/white-logo.png');
+  background-repeat: no-repeat;
+  cursor: pointer;
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+@font-face {
+  @include font-face('SourceSansPro-Regular');
+}
+@font-face {
+  @include font-face('SourceSansPro-Black');
+}
+@font-face {
+  @include font-face('SourceSansPro-BlackItalic');
+}
+@font-face {
+  @include font-face('SourceSansPro-Bold');
+}
+@font-face {
+  @include font-face('SourceSansPro-BoldItalic');
+}
+@font-face {
+  @include font-face('SourceSansPro-ExtraLight');
+}
+@font-face {
+  @include font-face('SourceSansPro-ExtraLightItalic');
+}
+@font-face {
+  @include font-face('SourceSansPro-Italic');
+}
+@font-face {
+  @include font-face('SourceSansPro-Light');
+}
+@font-face {
+  @include font-face('SourceSansPro-LightItalic');
+}
+@font-face {
+  @include font-face('SourceSansPro-SemiBold');
+}
+@font-face {
+  @include font-face('SourceSansPro-SemiBoldItalic');
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+h1,
+h2 {
+  margin: 0px;
+  padding: 0px;
+}
+
+@each $i in $colors {
+  .bg-#{nth($i, 1)} {
+    background-color: nth($i, 2);
+  }
+}
+
+.text {
+  font-family: 'SourceSansPro';
+  &-black {
+    font-family: 'SourceSansPro-Black';
+  }
+  &-black-italic {
+    font-family: 'SourceSansPro-BlackItalic';
+  }
+  &-bold {
+    font-family: 'SourceSansPro-Bold';
+  }
+  &-bold-italic {
+    font-family: 'SourceSansPro-BoldItalic';
+  }
+  &-extra-light {
+    font-family: 'SourceSansPro-ExtraLight';
+  }
+  &-extra-light-italic {
+    font-family: 'SourceSansPro-ExtraLightItalic';
+  }
+  &-italic {
+    font-family: 'SourceSansPro-Italic';
+  }
+  &-light {
+    font-family: 'SourceSansPro-Light';
+  }
+  &-light-italic {
+    font-family: 'SourceSansPro-LightItalic';
+  }
+  &-semi-bold {
+    font-family: 'SourceSansPro-SemiBold';
+  }
+  &-semi-bold-italic {
+    font-family: 'SourceSansPro-SemiBoldItalic';
+  }
+}

@@ -139,6 +139,7 @@ const createStory = () => {
   if (fileType === 'atom') storyFolder = 'Atoms';
   if (fileType === 'molecule') storyFolder = 'Molecules';
   if (fileType === 'organism') storyFolder = 'Organisms';
+  if (fileType === 'page') storyFolder = 'Pages';
 
   if (reduxFlag) {
     return `import React from 'react';
@@ -336,6 +337,7 @@ const createAtomicFileTree = (type) => {
   if (type === 'atom') dir = `./src/components/atoms/${file}`;
   if (type === 'molecule') dir = `./src/components/molecules/${file}`;
   if (type === 'organism') dir = `./src/components/organisms/${file}`;
+  if (type === 'page') dir = `./src/components/pages/${file}`;
 
   // ** Does nothing if the file is already created ** //
   if (fs.existsSync(`${dir}/${file}.jsx`)) return errorLog('Component Already Exists');

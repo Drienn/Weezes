@@ -10,7 +10,14 @@ storiesOf('Molecules/CardGroup', module)
     </div>
   ))
   .add('Default', () => <CardGroup />)
-  .add('Orange Group', () => <CardGroup titles={['zip stats', 'saved searches']} color="orange" />)
+  .add('Orange Group', () => (
+    <CardGroup
+      titles={['zip stats', 'saved searches']}
+      rights={[<span>I'm on the right</span>, <span>I'm on the right</span>]}
+      bodies={[<span>For Body One</span>, <span>For Body Two</span>]}
+      color="orange"
+    />
+  ))
   .add('Blue Group', () => (
     <CardGroup
       titles={['coummunity', 'suggested recommendations']}

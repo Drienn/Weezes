@@ -1,14 +1,143 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  -moz-osx-font-smoothing: grayscale; }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; }
+
+.logo {
+  margin: 10px;
+  width: 180px;
+  height: 50px;
+  background-size: 180px;
+  background-image: url("./assets/white-logo.png");
+  background-repeat: no-repeat;
+  cursor: pointer; }
+  .logo:active {
+    transform: translateY(2px); }
+
+@font-face {
+  font-family: "SourceSansPro-Regular";
+  src: local("SourceSansPro-Regular"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-Black";
+  src: local("SourceSansPro-Black"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-Black.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-BlackItalic";
+  src: local("SourceSansPro-BlackItalic"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-Bold";
+  src: local("SourceSansPro-Bold"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-BoldItalic";
+  src: local("SourceSansPro-BoldItalic"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-BoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-ExtraLight";
+  src: local("SourceSansPro-ExtraLight"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-ExtraLight.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-ExtraLightItalic";
+  src: local("SourceSansPro-ExtraLightItalic"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-ExtraLightItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-Italic";
+  src: local("SourceSansPro-Italic"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-Light";
+  src: local("SourceSansPro-Light"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-LightItalic";
+  src: local("SourceSansPro-LightItalic"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-SemiBold";
+  src: local("SourceSansPro-SemiBold"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "SourceSansPro-SemiBoldItalic";
+  src: local("SourceSansPro-SemiBoldItalic"), url("./style/fonts/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf") format("truetype"); }
+
+button:hover {
+  cursor: pointer; }
+
+h1,
+h2 {
+  margin: 0px;
+  padding: 0px; }
+
+.bg-brand-green {
+  background-color: #a8d73e; }
+
+.bg-brand-orange {
+  background-color: #f38a2d; }
+
+.bg-brand-blue {
+  background-color: #32a4de; }
+
+.bg-brand-murky-blue {
+  background-color: #2a81b1; }
+
+.bg-brand-grey {
+  background-color: #393839; }
+
+.bg-brand-accent-grey {
+  background-color: #444244; }
+
+.bg-brand-light-grey {
+  background-color: #858485; }
+
+.bg-brand-fusia {
+  background-color: #ce0044; }
+
+.bg-brand-plum {
+  background-color: #7a597a; }
+
+.bg-brand-red {
+  background-color: #fb0007; }
+
+.bg-brand-white {
+  background-color: #ffffff; }
+
+.bg-brand-black {
+  background-color: #0a090a; }
+
+.bg-brand-grey-text {
+  background-color: #bebdbe; }
+
+.bg-brand-dark-grey-text {
+  background-color: #717478; }
+
+.text {
+  font-family: 'SourceSansPro'; }
+  .text-black {
+    font-family: 'SourceSansPro-Black'; }
+  .text-black-italic {
+    font-family: 'SourceSansPro-BlackItalic'; }
+  .text-bold {
+    font-family: 'SourceSansPro-Bold'; }
+  .text-bold-italic {
+    font-family: 'SourceSansPro-BoldItalic'; }
+  .text-extra-light {
+    font-family: 'SourceSansPro-ExtraLight'; }
+  .text-extra-light-italic {
+    font-family: 'SourceSansPro-ExtraLightItalic'; }
+  .text-italic {
+    font-family: 'SourceSansPro-Italic'; }
+  .text-light {
+    font-family: 'SourceSansPro-Light'; }
+  .text-light-italic {
+    font-family: 'SourceSansPro-LightItalic'; }
+  .text-semi-bold {
+    font-family: 'SourceSansPro-SemiBold'; }
+  .text-semi-bold-italic {
+    font-family: 'SourceSansPro-SemiBoldItalic'; }

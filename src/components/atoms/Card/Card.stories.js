@@ -9,7 +9,15 @@ storiesOf('Atoms/Card', module)
       {story()}
     </div>
   ))
-  .add('Default', () => <Card headerText="Card" />)
-  .add('Background brand-orange', () => <Card headerText="zip stats" color="orange" />)
-  .add('Background brand-blue', () => <Card headerText="community" color="blue" />)
-  .add('Background brand-green', () => <Card headerText="top recommended" color="green" />);
+  .add('Default', () => <Card title="Card" />)
+  .add('Background brand-orange', () => <Card title="zip stats" color="orange" />)
+  .add('Background brand-blue', () => <Card title="community" color="blue" />)
+  .add('Background brand-blue headerRight', () => (
+    <Card title="community" color="blue" right={<span>Go Away meanie!</span>} />
+  ))
+  .add('Background brand-green', () => <Card title="top recommended" color="green" />)
+  .add('Background brand-accent-grey', () => (
+    <Card title="top recommended" color="accent-grey">
+      I have children
+    </Card>
+  ));

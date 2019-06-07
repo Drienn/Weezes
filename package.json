@@ -16,7 +16,8 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "storybook-react-router": "^1.0.5"
+    "storybook-react-router": "^1.0.5",
+    "webpack": "^4.28.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,6 +30,7 @@
     "create-atom": "node src/fileGenerator.js atom",
     "create-molecule": "node src/fileGenerator.js molecule",
     "create-organism": "node src/fileGenerator.js organism",
+    "create-page": "node src/fileGenerator.js page",
     "create-redux": "node src/fileGenerator.js redux",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"

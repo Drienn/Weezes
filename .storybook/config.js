@@ -1,5 +1,6 @@
 import { configure, addDecorator } from '@storybook/react';
 import { withNotes } from '@storybook/addon-notes';
+import 'index.css';
 
 addDecorator(withNotes);
 

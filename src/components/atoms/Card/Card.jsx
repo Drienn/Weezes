@@ -1,31 +1,35 @@
 import React from 'react';
 import { string, element } from 'prop-types';
-import 'style/global.css';
 import './Card.css';
 
 const Card = ({
-  headerText, color, className, children, size,
+  title, right, color, className, children, size,
 }) => (
   <div className={`card-container ${size} bg-brand-${color} ${className}`}>
-    <h2 className="header-text">{headerText}</h2>
-    {children}
+    <div className="header">
+      <h2 className="header-text">{title}</h2>
+      {right}
+    </div>
+    <div className="body">{children}</div>
   </div>
 );
 
 Card.propTypes = {
-  headerText: string,
+  title: string,
   color: string,
   className: string,
   size: string,
   children: element,
+  right: element,
 };
 
 Card.defaultProps = {
-  headerText: 'Card',
+  title: 'Card',
   color: '',
   className: '',
   size: 'small',
   children: <span />,
+  right: null,
 };
 
 export default Card;
