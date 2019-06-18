@@ -1,0 +1,18 @@
+.todo-item-container {
+  display: flex;
+  color: #bebdbe;
+  font-family: 'SourceSansPro-SemiBold';
+  border-bottom: 1px solid #393839;
+  margin: 10px;
+  padding: 2px; }
+  .todo-item-container .checkbox {
+    width: 20px;
+    height: 20px;
+    border: solid #bebdbe 1px;
+    border-radius: 3px;
+    margin-right: 20px;
+    cursor: pointer; }
+    .todo-item-container .checkbox:active {
+      transform: translateY(2px); }
+  .todo-item-container .complete {
+    background-color: #bebdbe; }

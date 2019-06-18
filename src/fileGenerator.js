@@ -362,7 +362,9 @@ const createAtomicFileTree = (type) => {
   );
   fs.writeFile(
     `${dir}/${file}.scss`,
-    `.${makeContainerStyleName(file)} {
+    `@import '../../../style/safe-include';
+
+.${makeContainerStyleName(file)} {
   height: unset;
   width: unset;
 }

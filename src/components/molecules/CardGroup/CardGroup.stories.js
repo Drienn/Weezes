@@ -2,6 +2,20 @@ import React from 'react';
 /* eslint-disable */
 import { storiesOf } from '@storybook/react';
 import CardGroup from './CardGroup';
+import ZipStatsBody from '../../atoms/Card/BodyTemplates/ZipStatsBody';
+
+const cardDataOne = [
+  { title: 'zip stats', right: <span>I'm on the right</span>, body: ZipStatsBody },
+  {
+    title: 'saved searches',
+    right: <span>I'm on the right</span>,
+    body: <span>For Body Two</span>,
+  },
+];
+const cardDataTwo = [
+  { title: 'coummunity', body: <span>For Body One</span> },
+  { title: 'suggested recommendations', body: <span>For Body Two</span> },
+];
 
 storiesOf('Molecules/CardGroup', module)
   .addDecorator(story => (
@@ -10,18 +24,5 @@ storiesOf('Molecules/CardGroup', module)
     </div>
   ))
   .add('Default', () => <CardGroup />)
-  .add('Orange Group', () => (
-    <CardGroup
-      titles={['zip stats', 'saved searches']}
-      rights={[<span>I'm on the right</span>, <span>I'm on the right</span>]}
-      bodies={[<span>For Body One</span>, <span>For Body Two</span>]}
-      color="orange"
-    />
-  ))
-  .add('Blue Group', () => (
-    <CardGroup
-      titles={['coummunity', 'suggested recommendations']}
-      color="blue"
-      bodies={[<div>Hello from First Body!!</div>, <div>Second Body!</div>]}
-    />
-  ));
+  .add('Orange Group', () => <CardGroup cardData={cardDataOne} color="orange" />)
+  .add('Blue Group', () => <CardGroup cardData={cardDataTwo} color="blue" />);

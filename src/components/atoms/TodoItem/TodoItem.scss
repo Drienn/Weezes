@@ -1,0 +1,23 @@
+@import '../../../style/safe-include';
+
+.todo-item-container {
+  display: flex;
+  color: $brand-grey-text;
+  font-family: 'SourceSansPro-SemiBold';
+  border-bottom: 1px solid $brand-grey;
+  margin: 10px;
+  padding: 2px;
+
+  .checkbox {
+    width: 20px;
+    height: 20px;
+    border: solid $brand-grey-text 1px;
+    border-radius: 3px;
+    margin-right: 20px;
+    @include clickable;
+  }
+
+  .complete {
+    background-color: $brand-grey-text;
+  }
+}

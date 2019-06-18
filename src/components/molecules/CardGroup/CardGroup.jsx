@@ -1,36 +1,28 @@
 import React from 'react';
-import { array, string } from 'prop-types';
+import { arrayOf, shape, string } from 'prop-types';
 import { Card } from '../../atoms';
 import './CardGroup.css';
 
-const CardGroup = ({
-  titles: [titleOne, titleTwo],
-  rights: [rightOne, rightTwo],
-  bodies: [bodyOne, bodyTwo],
-  color,
-}) => (
+const CardGroup = ({ cardData, color }) => (
   <div className="card-group-container">
-    <Card title={titleOne} right={rightOne} color={color}>
-      {bodyOne}
-    </Card>
-    <Card title={titleTwo} right={rightTwo} color={color}>
-      {bodyTwo}
-    </Card>
+    {cardData.map(({
+      title, right, body, size,
+    }) => (
+      <Card key={title} title={title} right={right} size={size} color={color}>
+        {body}
+      </Card>
+    ))}
   </div>
 );
 
 CardGroup.propTypes = {
+  cardData: arrayOf(shape({})),
   color: string,
-  titles: array,
-  bodies: array,
-  rights: array,
 };
 
 CardGroup.defaultProps = {
+  cardData: [],
   color: '',
-  titles: [],
-  bodies: [],
-  rights: [],
 };
 
 export default CardGroup;

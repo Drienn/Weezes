@@ -1,11 +1,5 @@
 @import './style/safe-include';
 
-@mixin font-face($name) {
-  font-family: $name;
-  src: local($name),
-    url('./style/fonts/Source_Sans_Pro/#{$name}.ttf') format('truetype');
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -39,10 +33,7 @@ code {
   background-size: 180px;
   background-image: url('./assets/white-logo.png');
   background-repeat: no-repeat;
-  cursor: pointer;
-  &:active {
-    transform: translateY(2px);
-  }
+  @include clickable;
 }
 
 .disabled {

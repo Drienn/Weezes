@@ -1,0 +1,12 @@
+@mixin font-face($name) {
+  font-family: $name;
+  src: local($name),
+    url('./style/fonts/Source_Sans_Pro/#{$name}.ttf') format('truetype');
+}
+
+@mixin clickable {
+  cursor: pointer;
+  &:active {
+    transform: translateY(2px);
+  }
+}
