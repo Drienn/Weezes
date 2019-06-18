@@ -2,6 +2,7 @@ import React from 'react';
 /* eslint-disable */
 import { storiesOf } from '@storybook/react';
 import Card from './Card';
+import { ZipStatsBody } from './BodyTemplates/';
 
 storiesOf('Atoms/Card', module)
   .addDecorator(story => (
@@ -10,7 +11,11 @@ storiesOf('Atoms/Card', module)
     </div>
   ))
   .add('Default', () => <Card title="Card" />)
-  .add('Background brand-orange', () => <Card title="zip stats" color="orange" />)
+  .add('Background brand-orange', () => (
+    <Card title="zip stats" color="orange" size="small">
+      {ZipStatsBody}
+    </Card>
+  ))
   .add('Background brand-blue', () => <Card title="community" color="blue" />)
   .add('Background brand-blue headerRight', () => (
     <Card title="community" color="blue" right={<span>Go Away meanie!</span>} />

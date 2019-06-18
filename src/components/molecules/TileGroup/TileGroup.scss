@@ -1,0 +1,10 @@
+.tile-group-container {
+  // height: unset;
+  // width: unset;
+
+  .titles-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

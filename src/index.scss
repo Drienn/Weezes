@@ -14,11 +14,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'SourceSansPro-Regular';
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo {
@@ -32,6 +43,11 @@ code {
   &:active {
     transform: translateY(2px);
   }
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 @font-face {
@@ -85,6 +101,12 @@ h2 {
   .bg-#{nth($i, 1)} {
     background-color: nth($i, 2);
   }
+}
+.color-text {
+  font-family: 'SourceSansPro-regular';
+  color: darken($brand-white, 5%);
+  opacity: 0.7;
+  font-size: 20px;
 }
 
 .text {

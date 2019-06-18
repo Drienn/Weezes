@@ -2,6 +2,8 @@
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #ffffff; }
+  .card-container.small {
+    width: 320px; }
   .card-container .header {
     display: flex;
     justify-content: space-between;

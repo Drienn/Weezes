@@ -1,0 +1,35 @@
+@import '../../../style/safe-include';
+
+.tile-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  // height: 170px;
+  width: 220px;
+  margin: 15px;
+  color: $brand-white;
+  // font-family: 'SourceSansPro-Regular';
+  background-color: $brand-blue;
+  border: solid $brand-white 1px;
+  border-radius: 5px;
+  text-align: center;
+
+  .contents {
+    margin-top: 20px;
+  }
+
+  .img-placeholder {
+    width: 100px;
+    height: 100px;
+    margin: 0px auto;
+    background-color: grey;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+  &:active {
+    transform: translateY(2px);
+  }
+}

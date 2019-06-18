@@ -1,0 +1,13 @@
+@import '../../../style/safe-include';
+
+.pill-container {
+  display: inline-block;
+  padding: 5px 25px;
+  border-radius: 50px;
+  box-shadow: 2px 3px 20px $brand-light-grey;
+
+  cursor: pointer;
+  &:active {
+    transform: translateY(2px);
+  }
+}

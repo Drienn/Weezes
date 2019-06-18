@@ -5,6 +5,10 @@
   border-radius: 10px;
   border: 1px solid $brand-white;
 
+  &.small {
+    width: 320px;
+  }
+
   .header {
     display: flex;
     justify-content: space-between;

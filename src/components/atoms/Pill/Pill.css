@@ -1,0 +1,8 @@
+.pill-container {
+  display: inline-block;
+  padding: 5px 25px;
+  border-radius: 50px;
+  box-shadow: 2px 3px 20px #858485;
+  cursor: pointer; }
+  .pill-container:active {
+    transform: translateY(2px); }
